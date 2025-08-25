@@ -26,7 +26,7 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-                src="/logo/heimatland-escudo.svg"
+                src="/logo/heimatland-escudo-semfundo.png"
                 alt="Logo Heimatland"
                 width={48}
                 height={48}

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Calendar, Clock, Users, Star } from 'lucide-react'
+import { Calendar, Clock, Users } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -38,12 +38,6 @@ export default function HomePage() {
                 title: "Próximos Eventos",
                 description: "Acompanhe nossas próximas apresentações e eventos culturais",
                 viewAll: "Ver Todos os Eventos"
-            },
-            news: {
-                title: "Últimas Notícias",
-                description: "Fique por dentro das novidades e atividades do nosso grupo",
-                readMore: "Ler mais",
-                viewAll: "Ver Todas as Notícias"
             }
         },
         events: {
@@ -53,23 +47,6 @@ export default function HomePage() {
             eventCenter: "Centro de Eventos",
             centralSquare: "Praça Central",
             municipalTheater: "Teatro Municipal"
-        },
-        news: {
-            childrenCostume: {
-                title: "Novo traje infantil é apresentado pelo grupo",
-                excerpt: "O Heimatland apresentou oficialmente o novo traje infantil, desenvolvido com tecidos tradicionais alemães...",
-                image: "/news/traje-infantil.svg"
-            },
-            internationalFestival: {
-                title: "Grupo participa do Festival Internacional de Folclore",
-                excerpt: "Heimatland representou o Rio Grande do Sul no Festival Internacional de Folclore realizado em São Paulo...",
-                image: "/news/festival-internacional.svg"
-            },
-            danceWorkshop: {
-                title: "Oficina de dança alemã para iniciantes",
-                excerpt: "Nova turma de iniciantes começará em abril. As inscrições já estão abertas para todas as idades...",
-                image: "/news/oficina-danca.svg"
-            }
         }
     }
 
@@ -94,33 +71,6 @@ export default function HomePage() {
             date: "05 de Setembro, 2024",
             time: "20:00",
             location: data.events.municipalTheater
-        }
-    ]
-
-    const latestNews = [
-        {
-            id: 1,
-            title: data.news.childrenCostume.title,
-            excerpt: data.news.childrenCostume.excerpt,
-            date: "12 de Agosto, 2024",
-            slug: "novo-traje-infantil",
-            image: "/news/traje-infantil.jpg"
-        },
-        {
-            id: 2,
-            title: data.news.internationalFestival.title,
-            excerpt: data.news.internationalFestival.excerpt,
-            date: "08 de Agosto, 2024",
-            slug: "festival-internacional",
-            image: "/news/festival-internacional.jpg"
-        },
-        {
-            id: 3,
-            title: data.news.danceWorkshop.title,
-            excerpt: data.news.danceWorkshop.excerpt,
-            date: "05 de Agosto, 2024",
-            slug: "oficina-danca",
-            image: "/news/oficina-danca.jpg"
         }
     ]
 
@@ -205,47 +155,33 @@ export default function HomePage() {
             <div className="w-24 h-1 bg-gradient-to-r from-black via-red-600 to-yellow-500 mx-auto mb-8"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className="text-lg text-gray-700 leading-relaxed">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 {data.home.history.founded}
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-gray-700 leading-relaxed mb-8">
                 {data.home.history.experience}
               </p>
               
-              <div className="grid grid-cols-3 gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600 mb-2">37</div>
-                  <div className="text-sm text-gray-600">{data.home.history.stats.years}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600 mb-2">50+</div>
-                  <div className="text-sm text-gray-600">{data.home.history.stats.members}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600 mb-2">200+</div>
-                  <div className="text-sm text-gray-600">{data.home.history.stats.performances}</div>
-                </div>
-              </div>
-
               <Link href="/sobre" 
-                    className="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 mt-6">
+                    className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
                 {data.home.history.learnMore}
               </Link>
             </div>
 
-            <div className="relative">
-              <Image
-                src="/about/grupo-historico.svg"
-                alt="Foto histórica do Grupo Heimatland"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl"
-              />
-              <div className="absolute -bottom-4 -right-4 bg-yellow-500 text-black p-4 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold">1987</div>
-                <div className="text-sm">Fundação</div>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="text-4xl font-bold text-red-600 mb-2">37+</div>
+                <div className="text-gray-600">{data.home.history.stats.years}</div>
+              </div>
+              <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="text-4xl font-bold text-yellow-500 mb-2">50+</div>
+                <div className="text-gray-600">{data.home.history.stats.members}</div>
+              </div>
+              <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="text-4xl font-bold text-red-600 mb-2">200+</div>
+                <div className="text-gray-600">{data.home.history.stats.performances}</div>
               </div>
             </div>
           </div>
@@ -253,7 +189,7 @@ export default function HomePage() {
       </section>
 
       {/* Próximos Eventos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-gothic" 
@@ -268,7 +204,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (
-              <div key={event.id} className="bg-white rounded-lg shadow-lg border-l-4 border-red-600 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div key={event.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <Calendar className="h-5 w-5 text-red-600 mr-2" />
@@ -298,67 +234,6 @@ export default function HomePage() {
             <Link href="/eventos" 
                   className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
               {data.home.events.viewAll}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Últimas Notícias Section */}
-      <section className="py-20 bg-gray-50 section-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-gothic" 
-                style={{ color: '#D41B1B' }}>
-              {data.home.news.title}
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-black via-red-600 to-yellow-500 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {data.home.news.description}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {latestNews.map((news) => (
-              <article key={news.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48">
-                  <Image
-                    src={news.image}
-                    alt={news.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center mb-3">
-                    <Star className="h-4 w-4 text-yellow-500 mr-1" />
-                    <span className="text-sm text-gray-500">{news.date}</span>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
-                    {news.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {news.excerpt}
-                  </p>
-                  
-                  <Link href={`/blog/${news.id}`} 
-                        className="text-red-600 hover:text-red-700 font-semibold inline-flex items-center">
-                    {data.home.news.readMore}
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/blog" 
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
-              {data.home.news.viewAll}
             </Link>
           </div>
         </div>
